@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { LandingPage } from './layouts/landing/Index';
 import { SignupPage } from './layouts/signup/Index';
+import { ChatLayout } from './layouts/chat/Index';
 
 const App: React.FC = () => {
   return (
@@ -17,6 +18,11 @@ const App: React.FC = () => {
             path="/signup"
             exact={true}
             component={SignupPage}
+          />
+          <Route
+            path="/chatLayout"
+            exact={true}
+            component={ChatLayout}
           />
         </Switch>
       </BrowserRouter>

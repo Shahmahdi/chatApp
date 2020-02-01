@@ -1,8 +1,8 @@
 import { SET_CHAT_USER } from "./Types";
 
 const InitialState = {
-  currentId: '',
-  currentUsername: ''
+  id: '',
+  name: ''
 }
 
 export const ChatReducer = (state = InitialState, action: any) => {

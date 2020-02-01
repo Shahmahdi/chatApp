@@ -6,14 +6,17 @@ const chatkit = new Chatkit({
   key: "b04a70a0-165e-43af-80c4-d9d77bf6fffe:wF365yWXE5c57BYC1OlX69F/pgmpCnp95t/besMuDhs="
 });
 
-export const createChatkitUser = (userSignupValues: any) => async (dispatch: any) => {
+export const createChatkitUser = (userSignupValues: any, history: any) => async (dispatch: any) => {
   try {
     const currentUser = await chatkit.createUser({
       id: userSignupValues.username,
       name: userSignupValues.username
     });
     dispatch({ type: SET_CHAT_USER, payload: currentUser });
+    history.push('/chatLayout')
+    return true;
   } catch (error) {
     console.log(`Chatkit create user error: `, error);
+    return false;
   }
 }

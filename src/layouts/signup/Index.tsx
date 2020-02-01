@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { createChatkitUser } from '../../stores/chat/Actions';
 import { connect } from 'react-redux';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
 
 const SignupPageComponent = (props: {
-  createChatkitUser: (userSignupValues: any) => void;
-}) => {
+  createChatkitUser: (userSignupValues: any, history: any) => void;
+} & RouteComponentProps) => {
 
   const [userSignupValues, setUserSignupValues] = useState({
     username: ''
@@ -29,7 +30,7 @@ const SignupPageComponent = (props: {
           className="submit"
           onClick={e => {
             e.preventDefault();
-            props.createChatkitUser(userSignupValues);
+            props.createChatkitUser(userSignupValues, props.history);
           }}
         >
           Submit
@@ -39,4 +40,4 @@ const SignupPageComponent = (props: {
   )
 }
 
-export const SignupPage = connect(null, { createChatkitUser })(SignupPageComponent);
+export const SignupPage = connect(null, { createChatkitUser })(withRouter(SignupPageComponent));
